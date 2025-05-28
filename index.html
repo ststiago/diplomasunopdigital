@@ -1,90 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Validação de Diploma</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background: url('diplomaimagem.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .form-box {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    h1 {
-      color: #002855;
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-bottom: 15px;
-    }
-
-    button {
-      background-color: #004080;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #002855;
-    }
-
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-  </style>
+  <title>Validador de Certificados</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="form-box">
-  <h1>Validação de Diploma</h1>
-  <input type="text" id="codigo" placeholder="Digite seu código de validação">
-  <button onclick="validarCodigo()">Validar</button>
-  <p id="mensagem" class="error"></p>
-</div>
-
-<script>
-  function validarCodigo() {
-    const codigo = document.getElementById("codigo").value.trim();
-    const mensagem = document.getElementById("mensagem");
-
-    if (codigo === "") {
-      mensagem.innerText = "Por favor, digite um código válido.";
-      return;
-    }
-
-    // Simula redirecionamento para página de certificado
-    window.location.href = `certificados/${codigo}.html`;
-  }
-</script>
-
+  <div class="container">
+    <h1>Validação de Certificado</h1>
+    <form action="validador.html">
+      <input type="text" placeholder="Digite o código do certificado" required>
+      <button type="submit">Validar</button>
+    </form>
+  </div>
 </body>
 </html>
