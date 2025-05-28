@@ -2,49 +2,90 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Validador de Certificados</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <body style="margin: 0; font-family: sans-serif; background-color: #f0f0f0;">
-  <div style="
-    background-image: url('capa.png');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 20px 200px;
-    text-align: center;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  ">
-    <h1 style="font-size: 28px;">Diploma Digital</h1>
-    <p style="font-size: 18px; margin-bottom: 20px;">Digite o código de validação abaixo para visualizar o diploma</p>
-    
-    <input type="text" id="codigo" placeholder="Ex: 298.298.45fc10485046" style="
-      padding: 10px;
-      width: 300px;
-      max-width: 90%;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diploma Digital</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("capa.png");
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    <button onclick="validarCodigo()" style="
-      padding: 10px 20px;
-      font-size: 16px;
+    .validador-container {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .validador-container h1 {
+      font-size: 22px;
+      color: #002855;
+      margin-bottom: 10px;
+    }
+
+    .validador-container p {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      margin-bottom: 15px;
+    }
+
+    button {
       background-color: #002855;
-      color: white;
+      color: #fff;
       border: none;
+      padding: 10px 25px;
       border-radius: 5px;
       cursor: pointer;
-    ">Validar</button>
+      font-size: 14px;
+    }
 
-    <p id="mensagem" style="margin-top: 20px;"></p>
+    button:hover {
+      background-color: #004488;
+    }
+  </style>
+</head>
+<body>
+  <div class="validador-container">
+    <h1>Diploma Digital</h1>
+    <p>Digite o código de validação abaixo para visualizar o certificado:</p>
+    <input type="text" id="codigo" placeholder="Ex: 298.298.45fc10485046">
+    <button onclick="validarCodigo()">Validar</button>
+    <p id="mensagem"></p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function validarCodigo() {
+      const codigo = document.getElementById("codigo").value.trim();
+      const mensagem = document.getElementById("mensagem");
+
+      if (codigo === "") {
+        mensagem.innerText = "Por favor, insira um código.";
+        mensagem.style.color = "red";
+        return;
+      }
+
+      // Redireciona para o certificado (simulação)
+      window.location.href = `${codigo}.pdf`;
+    }
+  </script>
 </body>
+</html>
