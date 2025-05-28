@@ -6,15 +6,45 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div style="text-align: center; padding: 20px;">
-  <img src="diplomaimagem.jpg" alt="Capa Diploma Digital" style="max-width: 100%; height: auto; border-radius: 10px;">
-</div>
-    <h1>Diploma Digital</h1>
-    <p>Digite o código de validação abaixo para visualizar o certificado:</p>
-    <input type="text" id="codigo" placeholder="Ex: 298.298.45tp12345678">
-    <button onclick="validarCodigo()">Validar</button>
-    <p id="mensagem"></p>
+  <body style="margin: 0; font-family: sans-serif; background-color: #f0f0f0;">
+  <div style="
+    background-image: url('diplomaimagem.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px 200px;
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  ">
+    <h1 style="font-size: 28px;">Diploma Digital</h1>
+    <p style="font-size: 18px; margin-bottom: 20px;">Digite o código de validação abaixo para visualizar o diploma</p>
+    
+    <input type="text" id="codigo" placeholder="Ex: 298.298.45fc10485046" style="
+      padding: 10px;
+      width: 300px;
+      max-width: 90%;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    ">
+
+    <button onclick="validarCodigo()" style="
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    ">Validar</button>
+
+    <p id="mensagem" style="margin-top: 20px;"></p>
   </div>
+
   <script src="script.js"></script>
 </body>
-</html>
