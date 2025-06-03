@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #667eea);
+    min-height: 100vh;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.page {
+    display: none;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.page.active {
+    display: block;
+}
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.logo {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+.hero-image {
+    text-align: center;
+    font-size: 48px;
+    margin: 20px auto;
+}
+.form-container, .certificate-info {
+    margin-top: 20px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #2a5298;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #1e3c72;
+}
+.btn-download {
+    background: #4CAF50;
+}
+.btn-back {
+    background: #ff6b6b;
+    margin-left: 10px;
+}
+.error-message {
+    color: red;
+    margin-top: 15px;
+    display: none;
+}
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+.info-item {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+}
