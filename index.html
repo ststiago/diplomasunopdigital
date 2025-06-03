@@ -1,96 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Validação de Diplomas - Sistema Seguro</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .page { display: none; background: white; border-radius: 20px; padding: 30px; }
-        .page.active { display: block; }
-        .header { text-align: center; margin-bottom: 30px; }
-        h1 { color: #1e3c72; }
-        .form-container { margin-top: 20px; }
-        input[type="text"] {
-            padding: 10px; width: 100%; font-size: 1rem;
-            border: 1px solid #ccc; border-radius: 5px;
-        }
-        button {
-            margin-top: 15px; padding: 10px 20px; font-size: 1rem;
-            background: #2a5298; color: white; border: none; border-radius: 5px;
-            cursor: pointer;
-        }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
-        .info-item { background: #f4f4f4; padding: 10px; border-radius: 8px; }
-    </style>
+    <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
     <div class="container">
-        <!-- Página de Validação -->
         <div id="homePage" class="page active">
             <div class="header">
+                <div class="logo">🎓</div>
                 <h1>Sistema de Validação de Diplomas</h1>
-                <p>Universidade Pitágoras Unopar Anhanguera</p>
+                <p class="subtitle">Universidade Pitágoras Unopar Anhanguera</p>
             </div>
+            <div class="hero-image">🎓</div>
             <div class="form-container">
-                <label for="diplomaCode">Digite o código do diploma:</label>
-                <input type="text" id="diplomaCode" placeholder="Ex: 298.298.45FC45698746">
-                <button onclick="validateCode()">Validar</button>
-                <p id="errorMessage" style="color: red; display: none;">Código inválido ou não encontrado.</p>
+                <h2>Validar Certificado</h2>
+                <form id="validationForm">
+                    <label for="diplomaCode">Código do Diploma:</label>
+                    <input type="text" id="diplomaCode" required placeholder="Ex: 298.298.45fc10485046" />
+                    <button type="submit" class="btn">🔍 Validar Diploma</button>
+                </form>
+                <div id="errorMessage" class="error-message">❌ Código inválido. Verifique e tente novamente.</div>
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Validando diploma... Aguarde...</p>
+                </div>
             </div>
         </div>
 
-        <!-- Página de Resultado -->
         <div id="resultPage" class="page">
             <div class="header">
-                <h1>Diploma Validado com Sucesso</h1>
-                <p>Consulta conforme diretrizes do MEC</p>
+                <div class="logo">✅</div>
+                <h1>Diploma Validado</h1>
+                <p class="subtitle">Certificado encontrado e verificado com sucesso</p>
             </div>
-            <div class="info-grid">
-                <div class="info-item"><strong>Nome:</strong> Tiago dos Santos Paula</div>
-                <div class="info-item"><strong>CPF:</strong> 126.700.326-05</div>
-                <div class="info-item"><strong>Data de Nascimento:</strong> 24/08/1996</div>
-                <div class="info-item"><strong>Curso:</strong> Educação Física - Licenciatura</div>
-                <div class="info-item"><strong>Instituição:</strong> Unopar Anhanguera Pitágoras</div>
-                <div class="info-item"><strong>Ano de Conclusão:</strong> 2024</div>
-                <div class="info-item"><strong>Data de Emissão:</strong> 22/01/2025</div>
-                <div class="info-item"><strong>Portaria:</strong> nº 654 de 22/03/2019</div>
+            <div class="certificate-info">
+                <h3>📋 Informações do Certificado</h3>
+                <div class="info-grid">
+                    <div class="info-item"><strong>Nome:</strong> Tiago dos Santos Paula</div>
+                    <div class="info-item"><strong>CPF:</strong> 126.700.326-05</div>
+                    <div class="info-item"><strong>Nascimento:</strong> 24/08/1996</div>
+                    <div class="info-item"><strong>Curso:</strong> Educação Física - Licenciatura</div>
+                    <div class="info-item"><strong>Instituição:</strong> Universidade Pitágoras Unopar Anhanguera</div>
+                    <div class="info-item"><strong>Conclusão:</strong> 14/12/2024</div>
+                    <div class="info-item"><strong>Colação de Grau:</strong> 13/01/2025</div>
+                    <div class="info-item"><strong>Portaria:</strong> Nº 654 - 22/03/2019</div>
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
+            <div class="actions">
                 <a href="298.298.45fc10485046.pdf" download>
-                    <button>📥 Baixar Certificado em PDF</button>
+                    <button class="btn btn-download">📥 Baixar Certificado</button>
                 </a>
-                <button onclick="goBack()">⬅️ Voltar</button>
+                <button class="btn btn-back" onclick="goBack()">⬅️ Voltar</button>
             </div>
         </div>
     </div>
 
-    <script>
-        function validateCode() {
-            const code = document.getElementById('diplomaCode').value.trim();
-            const validCode = '298.298.45fc10485046'; // com letras minúsculas
-            const errorMessage = document.getElementById('errorMessage');
-
-            if (code === validCode) {
-                document.getElementById('homePage').classList.remove('active');
-                document.getElementById('resultPage').classList.add('active');
-                errorMessage.style.display = 'none';
-            } else {
-                errorMessage.style.display = 'block';
-            }
-        }
-
-        function goBack() {
-            document.getElementById('resultPage').classList.remove('active');
-            document.getElementById('homePage').classList.add('active');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
