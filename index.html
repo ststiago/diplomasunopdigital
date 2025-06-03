@@ -42,7 +42,7 @@
             </div>
             <div class="form-container">
                 <label for="diplomaCode">Digite o código do diploma:</label>
-                <input type="text" id="diplomaCode" placeholder="Ex: 298.298.45FC10485046">
+                <input type="text" id="diplomaCode" placeholder="Ex: 298.298.45FC45698746">
                 <button onclick="validateCode()">Validar</button>
                 <p id="errorMessage" style="color: red; display: none;">Código inválido ou não encontrado.</p>
             </div>
@@ -76,7 +76,8 @@
     <script>
         function validateCode() {
             const code = document.getElementById('diplomaCode').value.trim().toUpperCase();
-            const validCode = '298.298.45FC10485046';
+            const validCode = '298.298.45fc
+                10485046';
             const errorMessage = document.getElementById('errorMessage');
 
             if (code === validCode) {
